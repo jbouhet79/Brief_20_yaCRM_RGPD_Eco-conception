@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title th:replace="~{::title}">CRM App</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
 </head>
 <body>
     <header th:replace="components/navbar :: navbar"></header>
@@ -11,5 +12,6 @@
         <div th:replace="~{::section}"></div>
     </main>
     <footer th:replace="components/footer :: footer"></footer>
+    <script type="module" th:src="@{/js/cookieconsent-config.js}"></script>
 </body>
 </html>
