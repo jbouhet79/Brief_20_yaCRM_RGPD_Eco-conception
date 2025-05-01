@@ -1,0 +1,14 @@
+<main layout:fragment="content" th:fragment="main">
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="post" hx-post="/login" hx-target="main" hx-swap="innerHTML">
+        <label>Username: <input type="text" name="username" required/></label><br/>
+        <label>Password: <input type="password" name="password" required/></label><br/>
+        <button type="submit">Login</button>
+    </form>
+    <div th:if="${param.error}">
+        <p style="color:red">Invalid username or password.</p>
+    </div>
+    <div th:if="${param.logout}">
+        <p>Logged out successfully.</p>
+    </div>
+</main>

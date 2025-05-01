@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title th:replace="~{::title}">CRM App</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 </head>
 <body>
     <header th:replace="components/navbar :: navbar"></header>
@@ -12,6 +12,5 @@
         <div th:replace="~{::section}"></div>
     </main>
     <footer th:replace="components/footer :: footer"></footer>
-    <script type="module" th:src="@{/js/cookieconsent-config.js}"></script>
 </body>
 </html>

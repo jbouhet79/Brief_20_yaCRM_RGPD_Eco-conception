@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.simplon.brief20.dto.RegisterDTO;
@@ -22,18 +23,27 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String login() {
-        return "pages/login";
+    public String login(@RequestHeader(name = "HX-Request", defaultValue = "false", required = false) boolean isHTMX) {
+        if (isHTMX) { //  affichage de la page complète ou du fragement si l'en-tête HX-Request est présent et vaut true.
+            return "fragments/login";
+        } else {
+            return "pages/login";
+        }
     }
 
     @GetMapping("/register")
-    public String showRegisterForm(Model model) {
+    public String showRegisterForm(Model model, @RequestHeader(name = "HX-Request", defaultValue = "false", required = false) boolean isHTMX) {
         model.addAttribute("user", User.builder().build());
-        return "pages/register";
+        if (isHTMX) { //  affichage de la page complète ou du fragement si l'en-tête HX-Request est présent et vaut true.
+            return "fragments/register";
+        } else {
+            return "pages/register";
+        }
     }
 
+
     @PostMapping("/register")
-    public String register(@ModelAttribute RegisterDTO user, Model model) {
+    public String register(@ModelAttribute RegisterDTO user, Model model, @RequestHeader(name = "HX-Request", defaultValue = "false", required = false) boolean isHTMX) {
         userService.saveUser(User.builder()
         .username(user.getUsername())
         .password(passwordEncoder.encode(user.getPassword()))
@@ -43,6 +53,10 @@ public class AuthController {
         .build()
         );
         model.addAttribute("registerSuccess", true);
-        return "pages/login";
+        if (isHTMX) { //  affichage de la page complète ou du fragement si l'en-tête HX-Request est présent et vaut true.
+            return "fragments/login";
+        } else {
+            return "pages/login";
+        }
     }
 }

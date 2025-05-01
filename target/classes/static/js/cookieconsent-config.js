@@ -1,43 +1,22 @@
 import 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js';
 import 'https://cdn.jsdelivr.net/gh/orestbida/iframemanager@1.2.5/dist/iframemanager.js';
 
-/**
- * All config. options available here:
- * https://cookieconsent.orestbida.com/reference/configuration-reference.html
- */
-
-// im.run({
-//     onChange: ({ changedServices, eventSource }) => {
-//         if (eventSource.type === 'click') {
-//             const servicesToAccept = [
-//                 ...CookieConsent.getUserPreferences().acceptedServices['optionnels'],
-//                 ...changedServices
-//             ];
-
-//             CookieConsent.acceptService(servicesToAccept, 'optionnels');
-//         }
-//     },
-// });
-
 CookieConsent.run({
 
     categories: {
         nécessaires: {
-            enabled: true,  // this category is enabled by default
-            readOnly: true  // this category cannot be disabled
+            enabled: true,  // cette catégorie est activée par défaut
+            readOnly: true  // cette catégorie ne peut pas être désactivée
         },
         données: {
-            enabled: false,  // this category is enabled by default
-            readOnly: false  // this category cannot be disabled
-
-            // https://cookieconsent.orestbida.com/reference/configuration-reference.html#category-services
+            enabled: false,  // cette catégorie est désactivée par défaut
+            readOnly: false  // cette catégorie peut être désactivée
         },
     },
 
     language: {
         default: 'fr',
         translations: {
-            // fr: './fr.json'
             fr: {
                 "consentModal": {
                     "title": "Nous utilisons des cookies",
