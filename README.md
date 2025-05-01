@@ -25,7 +25,19 @@
 
 ### 2. Paramètrage de la fenêtre de gestion de cookies : ```cookieconsent-config```
 
-### 3. Rendu de l'affichage de la fenêtre.
+### 3. Balise ````<link>```` pour le CSS :
+Balise à placer dans la section <head> de votre fichier HTML pour inclure le fichier CSS
+````
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
+````
+
+### 4. Balise ````<script>```` pour le JavaScript :
+Balise à placer juste avant la fermeture de la balise <body> pour inclure le fichier JavaScript.
+````
+<script type="module" th:src="@{/js/cookieconsent-config.js}"></script>
+````
+
+### 4. Rendu de l'affichage de la fenêtre.
 
 ![image_utilisation_cookies_1](./media/image_utilisation_cookies_1.png)
 
